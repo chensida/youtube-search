@@ -1,4 +1,30 @@
 <div class="item">
     <h2>{{title}}</h2>
+    <form id="{{videoid}}">
+    	<input type="hidden" name="submitted" value="true">
+    	<input type="hidden" name="videoid" value="{{videoid}}">
+    	<input type="submit" value="add to db"></input>
+    </form>
     <iframe class="video w100" width="640" height="360" src="//www.youtube.com/embed/{{videoid}}" frameborder="0" allowfullscreen></iframe>
 </div>
+
+<script language="javascript">
+
+$("#{{videoid}}").submit(function(event) {
+ var values = $(this).serialize();
+ $.ajax({
+        url: "php/insert.php",
+        type: "post",
+        data: values ,
+        success: function (response) {
+           // you will get response from your php page (what you echo or print)                 
+           alert("added!");
+        },
+        error: function(jqXHR, textStatus, errorThrown) {
+           console.log(textStatus, errorThrown);
+        }
+
+
+    });
+});
+</script>
