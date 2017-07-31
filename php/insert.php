@@ -23,13 +23,14 @@ if (isset($_POST['submitted'])) {
 
 	$sqlinsert = "INSERT INTO videos (title, date, channel, tags, duration, topicDetails) VALUES ('$title', '$date', '$channelTitle', '$tags', '$duration', '$topicDetails')";
 
-	echo "<head>";
-	print_r($sqlinsert);
-	echo "</head>";
+	//echo "<head>";
+	//print_r($sqlinsert);
+	//echo "</head>";
 
 	if (!mysqli_query($dbcon, $sqlinsert)) {
 		die('error inserting records');
 	}
+	mysqli_close($dbcon);
 	//$newrecord = "1 record inserted";
 }
 

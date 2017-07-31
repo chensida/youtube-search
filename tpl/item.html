@@ -15,11 +15,10 @@ $("#{{videoid}}").submit(function(event) {
  $.ajax({
         url: "php/insert.php",
         type: "post",
-        data: values ,
+        data: values,
         success: function (response) {
            // you will get response from your php page (what you echo or print)  
-           alert("add");
-
+           alert("added");
         },
         error: function(jqXHR, textStatus, errorThrown) {
            console.log(textStatus, errorThrown);

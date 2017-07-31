@@ -25,3 +25,9 @@ handlers:
 
 - url: /php/insert.php
   script: php/insert.php
+
+- url: /php/connect.php
+  script: php/connect.php
+
+- url: /php/display.php
+script: php/display.php
