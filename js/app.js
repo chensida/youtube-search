@@ -15,7 +15,7 @@ $(function() {
             part: "snippet",
             type: "video",
             q: encodeURIComponent($("#search").val()).replace(/%20/g, "+"),
-            maxResults: 5,
+            maxResults: 10,
             order: "viewCount"
        }); 
        // execute the request
