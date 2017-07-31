@@ -4,9 +4,9 @@ ini_set("allow_url_fopen", 1);
 if (isset($_POST['submitted'])) {
 	$dbcon = mysqli_connect("130.211.236.143:3306", "root", "p@ssw0rd", "video");
     if (!$dbcon) {
-        echo "<h1>not connected to db</h1>";
+        echo "<script type='text/javascript'>alert('not connected');</script>";
     }
-    echo "<h1>connected!</h1>";
+    echo "<script type='text/javascript'>alert('connected');</script>";
 
 	$fname = $_POST['videoid'];
 	$json_url = "https://www.googleapis.com/youtube/v3/videos?part=snippet,contentDetails,player,recordingDetails,statistics,status,topicDetails&id={$fname}&key=AIzaSyAmcpGPaTlwpxtW064ud3fDb7cP6Q7w9qk";
@@ -21,7 +21,7 @@ if (isset($_POST['submitted'])) {
 	$duration = str_replace("'","''",$obj->items[0]->contentDetails->duration);
 	$topicDetails = str_replace("'","''",json_encode($obj->items[0]->topicDetails->topicCategories));
 
-	$sqlinsert = "INSERT INTO videos (title, date, channel, tags, duration, topicDetails) VALUES ('$date', '$title', '$channelTitle', '$tags', '$duration', '$topicDetails')";
+	$sqlinsert = "INSERT INTO videos (title, date, channel, tags, duration, topicDetails) VALUES ('$title', '$date', '$channelTitle', '$tags', '$duration', '$topicDetails')";
 
 	echo "<head>";
 	print_r($sqlinsert);

@@ -1,6 +1,6 @@
 <div class="item">
     <h2>{{title}}</h2>
-    <form id="{{videoid}}" method="post" action="php/insert.php">
+    <form id="{{videoid}}">
     	<input type="hidden" name="submitted" value="true">
     	<input type="hidden" name="videoid" value="{{videoid}}">
     	<input type="submit" value="add to db"></input>
@@ -10,15 +10,16 @@
 
 <script language="javascript">
 
-$("add").submit(function(event) {
+$("#{{videoid}}").submit(function(event) {
  var values = $(this).serialize();
  $.ajax({
         url: "php/insert.php",
         type: "post",
         data: values ,
         success: function (response) {
-           // you will get response from your php page (what you echo or print)                 
-           alert("added!");
+           // you will get response from your php page (what you echo or print)  
+           alert("add");
+
         },
         error: function(jqXHR, textStatus, errorThrown) {
            console.log(textStatus, errorThrown);
