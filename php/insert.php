@@ -2,11 +2,15 @@
 ini_set("allow_url_fopen", 1);
 
 if (isset($_POST['submitted'])) {
-	$dbcon = mysqli_connect("130.211.236.143:3306", "root", "p@ssw0rd", "video");
-    if (!$dbcon) {
-        echo "<script type='text/javascript'>alert('not connected');</script>";
-    }
-    echo "<script type='text/javascript'>alert('connected');</script>";
+
+	$dsn = getenv("MYSQL_DSN");
+	$user = getenv("MYSQL_USER");
+	$password = getenv("MYSQL_PASSWORD");
+	if (!isset($dsn, $user) || false == $password) {
+		throw new Exception('not set');
+	}
+
+	$dbcon = new PDO($dsn, $user, $password);
 
 	$fname = $_POST['videoid'];
 	$json_url = "https://www.googleapis.com/youtube/v3/videos?part=snippet,contentDetails,player,recordingDetails,statistics,status,topicDetails&id={$fname}&key=AIzaSyAmcpGPaTlwpxtW064ud3fDb7cP6Q7w9qk";
@@ -23,15 +27,12 @@ if (isset($_POST['submitted'])) {
 
 	$sqlinsert = "INSERT INTO videos (title, date, channel, tags, duration, topicDetails) VALUES ('$title', '$date', '$channelTitle', '$tags', '$duration', '$topicDetails')";
 
-	//echo "<head>";
-	//print_r($sqlinsert);
-	//echo "</head>";
-
-	if (!mysqli_query($dbcon, $sqlinsert)) {
-		die('error inserting records');
-	}
-	mysqli_close($dbcon);
-	//$newrecord = "1 record inserted";
+	try {
+		$statement = $db->prepare($sqlinsert);
+		$statement->execute();
+	} catch(PDOException $e) {
+        echo $e->getMessage();
+    }
 }
 
 ?>
