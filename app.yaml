@@ -11,23 +11,23 @@ handlers:
 - url: /js
   static_dir: js
 
-- url: /js/app.js
+- url: /js/app\.js
   script: js/app.js
 
 - url: /tpl
   static_dir: tpl
 
-- url: /tpl/item.html
+- url: /tpl/item\.html
   script: tpl/item.html
 
 - url: /php
   static_dir: php
 
-- url: /php/insert.php
+- url: /php/insert\.php
   script: php/insert.php
 
-- url: /php/connect.php
+- url: /php/connect\.php
   script: php/connect.php
 
-- url: /php/display.php
-script: php/display.php
+- url: /php/display\.php
+  script: php/display.php
