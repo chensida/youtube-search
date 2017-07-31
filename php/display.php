@@ -13,8 +13,8 @@ $statement = $db->prepare("select * from videos");
 $statement->execute();
 $all = $statement->fetchAll();
 
-echo "<table border="1">";
-echo "<tr><th>title</th><th>date</th><th>description</th><th>channel</th><th>tags</th><th>duration</th><th>topicDetails</th></tr>"; 
+echo "<table>";
+echo "<tr><td>title</td><td>date</td><td>description</td><td>channel</td><td>tags</td><td>duration</td><td>topicDetails</td></tr>"; 
 
 foreach ($all as $data) {
 	echo "<tr><td>" . $data['title'] . "</td><td>" . $data['date'] . "</td><td>" . $data['description'] . "</td><td>" . $data['channel'] . "</td><td>" . $data['tags'] . "</td><td>" . $data['duration'] . "</td><td>" . $data['topicDetails'] . "</td></tr>"; 
