@@ -1,7 +1,19 @@
 <?php
-$dbcon = mysqli_connect("130.211.236.143:3306", "root", "p@ssw0rd", "video");
-if (!$dbcon) {
-    echo "<script type='text/javascript'>alert('not connected');</script>";
-}
-echo "<script type='text/javascript'>alert('connected');</script>";
+
+	$dsn = "mysql:unix_socket=/cloudsql/video-search-and-save:us-central1:youtube-video-search-and-save;dbname=video";
+	$user = "root";
+	$password = "p@ssw0rd";
+	if (!isset($dsn, $user) || false == $password) {
+		throw new Exception('not set');
+	}
+
+	$db = new PDO($dsn, $user, $password);
+
+	$statement = $db->prepare("select * from videos");
+	$statement->execute();
+	$all = $statement->fetchAll();
+
+	foreach ($all as $data) {
+		echo $data["title"]."<br>";
+	}
 ?>

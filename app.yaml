@@ -22,3 +22,8 @@ handlers:
 
 - url: /php/(.+\.php)$
   script: php/\1
+
+env_variables:
+  MYSQL_DSN: mysql:unix_socket=/cloudsql/video-search-and-save:us-central1:youtube-video-search-and-save;dbname=video
+  MYSQL_USER: root
+  MYSQL_PASSWORD: p@ssw0rd
