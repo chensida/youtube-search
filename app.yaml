@@ -20,14 +20,5 @@ handlers:
 - url: /tpl/item\.html
   script: tpl/item.html
 
-- url: /php
-  static_dir: php
-
-- url: /php/insert\.php
-  script: php/insert.php
-
-- url: /php/connect\.php
-  script: php/connect.php
-
-- url: /php/display\.php
-  script: php/display.php
+- url: /php/(.+\.php)$
+  script: php/\1
