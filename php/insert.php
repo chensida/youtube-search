@@ -28,7 +28,7 @@ if (isset($_POST['submitted'])) {
 	$sqlinsert = "INSERT INTO videos (title, date, channel, tags, duration, topicDetails) VALUES ('$title', '$date', '$channelTitle', '$tags', '$duration', '$topicDetails')";
 
 	try {
-		$statement = $db->prepare($sqlinsert);
+		$statement = $dbcon->prepare($sqlinsert);
 		$statement->execute();
 	} catch(PDOException $e) {
         echo $e->getMessage();
