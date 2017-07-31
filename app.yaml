@@ -1,0 +1,27 @@
+runtime: php55
+api_version: 1
+
+handlers:
+- url: /
+  script: index.html
+
+- url: /index\.html
+  script: index.html
+
+- url: /js
+  static_dir: js
+
+- url: /js/app.js
+  script: js/app.js
+
+- url: /tpl
+  static_dir: tpl
+
+- url: /tpl/item.html
+  script: tpl/item.html
+
+- url: /php
+  static_dir: php
+
+- url: /php/insert.php
+  script: php/insert.php
