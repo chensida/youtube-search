@@ -17,6 +17,7 @@ if (isset($_POST['submitted'])) {
 	$json = file_get_contents($json_url);
 	$obj = json_decode($json);
 
+	$url = "https://youtu.be/{$fname}";
 	$date = str_replace("'","''",$obj->items[0]->snippet->publishedAt);
 	$title = str_replace("'","''",$obj->items[0]->snippet->title);
 	$description = str_replace("'","''",$obj->items[0]->snippet->description);
@@ -25,7 +26,7 @@ if (isset($_POST['submitted'])) {
 	$duration = str_replace("'","''",$obj->items[0]->contentDetails->duration);
 	$topicDetails = str_replace("'","''",json_encode($obj->items[0]->topicDetails->topicCategories));
 
-	$sqlinsert = "INSERT INTO videos (title, date, channel, tags, duration, topicDetails) VALUES ('$title', '$date', '$channelTitle', '$tags', '$duration', '$topicDetails')";
+	$sqlinsert = "INSERT INTO videos (url, title, date, channel, tags, duration, topicDetails) VALUES ('$url', '$title', '$date', '$channelTitle', '$tags', '$duration', '$topicDetails')";
 
 	try {
 		$statement = $dbcon->prepare($sqlinsert);
