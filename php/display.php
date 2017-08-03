@@ -26,7 +26,8 @@ echo "<tr>
 	</tr>"; 
 
 foreach ($all as $data) {
-	echo "<tr><td>" . $data['url'] . "</td><td>" . $data['title'] . "</td><td>" . $data['date'] . "</td><td>" . $data['description'] . "</td><td>" . $data['channel'] . "</td><td>" . $data['tags'] . "</td><td>" . $data['duration'] . "</td><td>" . $data['topicDetails'] . "</td></tr>"; 
+	$url = $data['url'];
+	echo "<tr><td><a href='{$url}'>" . $data['url'] . "</a></td><td>" . $data['title'] . "</td><td>" . $data['date'] . "</td><td>" . $data['description'] . "</td><td>" . $data['channel'] . "</td><td>" . $data['tags'] . "</td><td>" . $data['duration'] . "</td><td>" . $data['topicDetails'] . "</td></tr>"; 
 }
 
 echo "</table>"; 
