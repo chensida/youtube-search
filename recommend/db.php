@@ -1,12 +1,8 @@
 <?php
-/*
-Author: Javed Ur Rehman
-Website: http://www.allphptricks.com/
-*/
 
-$servername = "130.211.236.143";
-$username = "root";
-$password = "p@ssw0rd";
+$servername = getenv("MYSQL_DSN");
+$username = getenv("MYSQL_USER");
+$password = getenv("MYSQL_PASSWORD");
 //alert("1111");
 // Check connection
 try {
