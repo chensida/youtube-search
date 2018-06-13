@@ -9,7 +9,7 @@ Website: http://www.allphptricks.com/
 <head>
 <meta charset="utf-8">
 <title>Login</title>
-<link rel="stylesheet" href="css/style.css" />
+<link rel="stylesheet" href="/recommend/css/style.css" />
 </head>
 <body>
 <?php

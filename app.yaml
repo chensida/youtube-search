@@ -1,9 +1,19 @@
-runtime: php55
-api_version: 1
+runtime: php
+env: flex
+
+runtime_config:
+    document_root: .
+    front_controller_file: index.html
 
 handlers:
 - url: /
   script: index.html
+  
+- url: /(.+\.php)$
+  script: \1
+
+- url: /recommend/(.+\.php)$
+  script: \1
 
 - url: /index\.html
   script: index.html
@@ -16,6 +26,9 @@ handlers:
 
 - url: /tpl
   static_dir: tpl
+  
+- url: /recommend/css
+  static_dir: /recommend/css
 
 - url: /tpl/item\.html
   script: tpl/item.html
@@ -23,7 +36,13 @@ handlers:
 - url: /php/(.+\.php)$
   script: php/\1
 
+- url: /recommend/(.+\.php)$
+  script: php/\1
+
 env_variables:
   MYSQL_DSN: mysql:unix_socket=/cloudsql/video-search-and-save:us-central1:youtube-video-search-and-save;dbname=video
   MYSQL_USER: root
   MYSQL_PASSWORD: p@ssw0rd
+  
+beta_settings:
+    cloud_sql_instances: "video-search-and-save:us-central1:youtube-video-search-and-save"

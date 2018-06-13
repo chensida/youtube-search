@@ -22,7 +22,7 @@
 	    		$ts = $a1["tags"];
 	    		$ts = str_replace("[","",$ts);
 				$ts = str_replace("]","",$ts);
-				$ts = str_replace("'","",$ts);
+				$ts = str_replac("'","",$ts);
 				$ts = str_replace('"',"",$ts);
 				$tagarray = explode(",", $ts);
 	    		foreach ($tagarray as $tag) {

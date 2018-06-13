@@ -1,16 +1,12 @@
 <?php
-/*
-Author: Javed Ur Rehman
-Website: http://www.allphptricks.com/
-*/
 
-$servername = "130.211.236.143";
-$username = "root";
-$password = "p@ssw0rd";
-//alert("1111");
+$servername = "mysql:unix_socket=/cloudsql/video-search-and-save:us-central1:youtube-video-search-and-save;dbname=video";//getenv("MYSQL_DSN");
+$username = "root";//getenv("MYSQL_USER");
+$password = "p@ssw0rd";//getenv("MYSQL_PASSWORD");
+//echo "111";
 // Check connection
 try {
-$conn = new PDO("mysql:host=$servername;dbname=video", $username, $password);
+$conn = new PDO($servername, $username, $password);
 // set the PDO error mode to exception
 $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 //echo "Connected successfully"; 

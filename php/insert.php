@@ -3,9 +3,9 @@ ini_set("allow_url_fopen", 1);
 
 if (isset($_POST['submitted'])) {
 
-	$dsn = getenv("MYSQL_DSN");
-	$user = getenv("MYSQL_USER");
-	$password = getenv("MYSQL_PASSWORD");
+	$dsn = "mysql:unix_socket=/cloudsql/video-search-and-save:us-central1:youtube-video-search-and-save;dbname=video";//getenv("MYSQL_DSN");
+	$user = "root";//getenv("MYSQL_USER");
+	$password = "p@ssw0rd";//getenv("MYSQL_PASSWORD");
 	if (!isset($dsn, $user) || false == $password) {
 		throw new Exception('not set');
 	}
